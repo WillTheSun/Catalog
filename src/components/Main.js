@@ -34,16 +34,22 @@ var itemList = [{ 'name': 'Halibut', 'type': 'Farm Fresh', 'price': 12, 'descrip
 class ItemProfile extends React.Component {
     render() {
         return <div>
+        	
         	<div className="col-md-4">
-        		<img className="img-fluid" src="Prof.jpg"/>
+        		<img className="img-fluid" src="prof.jpg"/>
         	</div>
-			<div className="row col-md-8 middle">
+
+			<div className="row col-md-8" style={{padding: '30px'}}>
 	        	<h1 className="col-md-4">{this.props.vals.name}</h1>
 	        	<h5 className="col-md-4 pull-xs-right">{'$'+this.props.vals.price}</h5>
 			</div>
+
         	<h4>{this.props.vals.description}</h4>
+        	
         	<button className="btn btn-default">Add To Order</button>
+        	
         	<div className="clearfix"></div>
+
         </div>
     }
 }
