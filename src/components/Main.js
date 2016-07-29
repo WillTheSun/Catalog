@@ -8,7 +8,10 @@ import React from 'react';
 class Catalog extends React.Component {
     render() {
         return (
-            <ItemProfile vals={itemList[0]}/>
+            <div>
+            	<ItemProfile vals={itemList[0]}/>
+            	<ItemProfile vals={itemList[1]}/>
+            </div>
         );
     }
 }
@@ -19,21 +22,16 @@ var itemList = [{ 'name': 'Halibut', 'type': 'Farm Fresh', 'price': 12, 'descrip
 
 class ItemProfile extends React.Component {
     render() {
-        return <div>
-        	
-        	<div className="col-sm-4">
-        		<img className="img-fluid" src="halibut.jpg"/>
+        return <div className="col-sm-12 col-xs-12">
+        	<div className="col-sm-4 col-xs-6">
+        		<img className="img-fluid" style={{'padding': '20px'}} src="halibut.jpg"/>
         	</div>
-
-			<div className="col-sm-8" style={{'padding-top': '20px'}}>
-	        	<h1 className="col-sm-8">{this.props.vals.name}</h1>
-	        	<h4 className="col-sm-4 pull-xs-right" style={{'padding-top': '19px'}}>{'$'+this.props.vals.price}</h4>
-	        	<h4 className="col-sm-12">{this.props.vals.description}</h4>
-	        	
-	        	<div className="col-sm-6">
+	        	<h1 className="col-sm-5 col-xs-4">{this.props.vals.name}</h1>
+	        	<h4 className="col-sm-3 col-xs-2 pull-xs-right" style={{'padding-top': '26px'}}>{'$'+this.props.vals.price}</h4>
+	        	<h4 className="col-sm-8 col-xs-6">{this.props.vals.description}</h4>
+	        	<div className="col-sm-8 col-xs-6">
 	        		<button className="btn btn-default">Add To Order</button>
 				</div>
-			</div>
         </div>
     }
 }
