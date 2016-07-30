@@ -47,7 +47,7 @@ class ItemProfile extends React.Component {
 	        	<h5 className="col-sm-3 col-xs-2 pull-xs-right" style={{'padding-top': '26px'}}>{'$'+this.props.vals.price}</h5>
 	        	<h5 className="col-sm-8 col-xs-6">{this.props.vals.description}</h5>
 	        	<div className="col-sm-8 col-xs-6">
-	        		<button className="btn btn-default">Add To Order</button>
+	        		<button className="btn btn-danger">Add To Order</button>
 				</div>
         </div>
     }
