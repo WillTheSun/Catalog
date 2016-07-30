@@ -9,6 +9,7 @@ class Catalog extends React.Component {
     render() {
         return (
             <div>
+            	<Header tagline="Fresh Seafood Market" />
             	<ItemProfile vals={itemList[0]}/>
             	<ItemProfile vals={itemList[1]}/>
             </div>
@@ -16,19 +17,35 @@ class Catalog extends React.Component {
     }
 }
 
-var itemList = [{ 'name': 'Halibut', 'type': 'Farm Fresh', 'price': 12, 'description': 'Everyones favorite white fish.' },
-    { 'name': 'Wild Alaskan Salmon', 'type': 'Ocean Catch', 'price': 27, 'description': 'Big, juicy and shipped quickly' }
+var Header = React.createClass({
+  render : function() {
+    return (
+      <header className="top">
+        <h1>Catch
+          <span className="ofThe">
+            <span className="of">of</span>
+            <span className="the">the</span>
+          </span>
+          Day</h1>
+        <h3 className="tagline"><span>Fresh Seafood Market</span></h3> 
+      </header>
+    )
+  }
+})
+
+var itemList = [{ 'name': 'Halibut', 'img':'images/halibut.jpg', 'type': 'Farm Fresh', 'price': 12, 'description': 'Everyones favorite white fish.' },
+    { 'name': 'Wild Alaskan Salmon', 'img':'images/oyster.jpg', 'type': 'Ocean Catch', 'price': 27, 'description': 'Big, juicy and shipped quickly' }
 ];
 
 class ItemProfile extends React.Component {
     render() {
-        return <div className="col-sm-12 col-xs-12">
-        	<div className="col-sm-4 col-xs-6">
-        		<img className="img-fluid" style={{'padding': '20px'}} src="halibut.jpg"/>
+        return <div className="col-lg-9 col-sm-12 col-xs-12">
+        	<div className="col-lg-3 col-sm-4 col-xs-6">
+        		<img className="img-fluid" style={{'padding': '20px'}} src={this.props.vals.img}/>
         	</div>
-	        	<h1 className="col-sm-5 col-xs-4">{this.props.vals.name}</h1>
-	        	<h4 className="col-sm-3 col-xs-2 pull-xs-right" style={{'padding-top': '26px'}}>{'$'+this.props.vals.price}</h4>
-	        	<h4 className="col-sm-8 col-xs-6">{this.props.vals.description}</h4>
+	        	<textarea className="col-sm-5 col-xs-4">{this.props.vals.name}</textarea>
+	        	<h5 className="col-sm-3 col-xs-2 pull-xs-right" style={{'padding-top': '26px'}}>{'$'+this.props.vals.price}</h5>
+	        	<h5 className="col-sm-8 col-xs-6">{this.props.vals.description}</h5>
 	        	<div className="col-sm-8 col-xs-6">
 	        		<button className="btn btn-default">Add To Order</button>
 				</div>
