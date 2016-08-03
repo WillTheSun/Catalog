@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import Store from './components/Store';
 import Order from './components/Order';
 import Inventory from './components/Inventory';
+import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 
 class Layout extends React.Component {
     render() {

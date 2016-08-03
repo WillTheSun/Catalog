@@ -1,19 +1,16 @@
-require('normalize.css/normalize.css');
 require('styles/App.css');
-require('jquery');
-require('lodash');
 
-import Header from './Header';
-import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import Header from './Header';
+import { FishList } from './FishUtils';
 
 class OrderForm extends React.Component {
     render() {
+        let fishInCart = FishList.filter( f=>f.quantity>0 );
         return (
             <div className="col-sm-12 col-md-5 col-lg-3">
               <Header text = 'Your Order'/>
-              <OrderItem quantity={1} fish='Lobster' price='$12.00'/>
-              <OrderItem quantity={2} fish='Mahi Mahi' price='$27.00'/>
+                {fishInCart.map( f=> <OrderItem fish={f} key={f.key}/> )}
               <Total text = '$0.00'/>
             </div>
         );
@@ -23,9 +20,9 @@ class OrderForm extends React.Component {
 class OrderItem extends React.Component {
     render() {
         return (
-            <div>
-        		<h5 className="col-lg-8 col-xs-8" style={{'fontSize': '16px', fontStyle: 'italic'}}>{this.props.quantity + ' lb ' + this.props.fish}</h5>
-        		<h5 className="col-lg-4 col-xs-4 pull-xs-right" style={{'fontSize': '16px'}}>{this.props.price}</h5>
+            <div className="p-t-2">
+        		<h5 className="col-lg-8 col-xs-8" style={{'fontSize': '16px', fontStyle: 'italic'}}>{this.props.fish.quantity + ' lb ' + this.props.fish.name}</h5>
+        		<h5 className="col-lg-4 col-xs-4 pull-xs-right" style={{'fontSize': '16px'}}>{this.props.fish.price}</h5>
         		<hr style = {{'height': '1px'}}/>
         	</div>
         );
@@ -35,7 +32,7 @@ class OrderItem extends React.Component {
 class Total extends React.Component {
     render() {
         return (
-            <div>
+            <div className="p-t-1">
         		<h5 className="col-lg-8 col-xs-8">Total:</h5>
         		<h5 className="col-lg-4 col-xs-4 pull-xs-right">{this.props.text}</h5>
         		<hr />

@@ -1,38 +1,37 @@
-require('normalize.css/normalize.css');
-require('styles/App.css');
-require('jquery');
-require('lodash');
-
-import Header from './Header'
-import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
+import Header from './Header'
+import { FishList } from './FishUtils';
 
 class Inventory extends React.Component {
     render() {
         return (
             <div className="col-sm-12 col-md-5 col-lg-4" >
               	<Header text="Inventory" />
-              	<InventoryBox />
+              	<ul className="list-group">
+                    {FishList.map(fish => <InventoryBox fish={fish} key={fish.key}/> )}
+            	</ul>
             </div>
         );
     }
 }
 
-class InventoryBox extends React.Component{
-	render(){
-		return (
-			<li className="list-group-item card container-fluid">
-				<div className="col-md-4 card">Lobster</div>
-				<div className="col-md-4 card">32.00</div>
-				<div className="col-md-4 card">Fresh!</div>
-				<ul className="list-group list-group-flush" style={{'marginTop':'0px'}}>
-					<div className="col-md-12 list-group-item">Description goes here</div>
-					<div className="col-md-12 list-group-item">http://imagesource.com</div>
-					<div className="col-md-12 list-group-item">Remove Fish Button</div>
+class InventoryBox extends React.Component {
+    render() {
+        let fish = this.props.fish;
+        //console.log(JSON.stringify(fish));
+        return (
+            <li className="list-group-item container-fluid">
+				<div className="col-md-4 card">{fish.name}</div>
+				<div className="col-md-4 card">{fish.price}</div>
+				<div className="col-md-4 card">{fish.status}</div>
+				<ul className="list-group list-group-flush">
+					<div className="col-md-12 list-group-item">{fish.desc}</div>
+					<div className="col-md-12 list-group-item">{fish.image}</div>
+					<div className="col-md-12 list-group-item">Remove Fish</div>
 				</ul>
 			</li>
-		);
-	}
+        );
+    }
 }
 
 export default Inventory;

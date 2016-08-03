@@ -1,7 +1,3 @@
-require('normalize.css/normalize.css');
-require('styles/App.css');
-
-import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 
 class Header extends React.Component {
