@@ -18,3 +18,11 @@ body {
   border-width: 1px 0;
   background: #666;
 }
+
+hr {
+    height: 2px;
+    background-color:#14141f;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 90%;
+}

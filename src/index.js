@@ -1,7 +1,20 @@
 import 'core-js/fn/object/assign';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/Store';
+import Store from './components/Store';
+import Order from './components/Order';
+import Inventory from './components/Inventory';
 
-// Render the main component into the dom
-ReactDOM.render(<App />, document.getElementById('app'));
+class Layout extends React.Component {
+    render() {
+        return (
+            <div>
+              	<Store/>
+              	<Order/>
+              	<Inventory/>
+            </div>
+        );
+    }
+}
+
+ReactDOM.render(<Layout />, document.getElementById('app'));
