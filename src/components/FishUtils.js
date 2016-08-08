@@ -1,21 +1,19 @@
 let keyGen = 0;
 
 export function loadSamples() {
-    var fishList = [];
-    var jsonList = require('./sample-fishes');
-    for (var key in jsonList) {
-        var x = jsonList[key];
-        fishList.push(createFish(x.name, x.price, x.desc, x.image, x.status));
-    }
+    var fishList = {};
+    var jList = require('./sample-fishes');
+    Object.keys(jList).forEach((key)=>{
+        let x = jList[key];
+        fishList[keyGen] = createFish(x.name, x.price, x.desc, x.image, x.status);
+        keyGen++;
+    });
     return fishList;
 }
 
 export function createFish(name, price, desc, image, status) {
-    let convertPrice = (x) => {
-        return '$' + x.substring(0, x.length - 2) + '.' + x.substring(x.length - 2)
-    };
+    let convertPrice = (x) => '$' + x.substring(0, x.length - 2) + '.' + x.substring(x.length - 2)
     return {
-        key: keyGen++,
         name: name,
         price: convertPrice(price.toString()),
         desc: desc,
@@ -25,12 +23,17 @@ export function createFish(name, price, desc, image, status) {
     }
 }
 
-export function removeFish(key, list) {
-        this.setState({fishList: 
-            this.state.fishList.filter(
-                fish => {return fish.key !== key}
-            )
-        });
-    }
+export function removeFish(key) {
+    delete this.state.fishList[key];
+    this.setState({ fishList: this.state.fishList });
+}
 
-export const printList = (list) => { list.map(f => console.log(JSON.stringify(f))) }
+export function increase(key) {
+    this.state.fishList[key].quantity++;
+    this.setState({ fishList: this.state.fishList });   
+}
+
+export function decrease(key) {
+    this.state.fishList[key].quantity--;
+    this.setState({ fishList: this.state.fishList });   
+}
