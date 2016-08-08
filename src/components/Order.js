@@ -4,7 +4,7 @@ import React from 'react';
 import Header from './Header';
 
 class OrderForm extends React.Component {
-    convertInt = (dollar) => Number(dollar.replace(/[^0-9\.]+/g, ""))
+    convertInt = (dollar) => Number(dollar.replace(/[^0-9\.]+/g, ''))
     convertDollar = (num) => '$' + Math.round(num * 100) / 100
     orderedFishes() {
         let fishInCart = [];

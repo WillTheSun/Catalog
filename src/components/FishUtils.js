@@ -28,12 +28,17 @@ export function removeFish(key) {
     this.setState({ fishList: this.state.fishList });
 }
 
+export function addFish(key, fish) {
+    this.state.fishList[key] = fish;
+    this.setState({ fishList: this.state.fishList });
+}
+
 export function increase(key) {
     this.state.fishList[key].quantity++;
-    this.setState({ fishList: this.state.fishList });   
+    this.setState({ fishList: this.state.fishList });
 }
 
 export function decrease(key) {
     this.state.fishList[key].quantity--;
-    this.setState({ fishList: this.state.fishList });   
+    this.setState({ fishList: this.state.fishList });
 }

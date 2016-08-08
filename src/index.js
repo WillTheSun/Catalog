@@ -5,7 +5,7 @@ import Store from './components/Store';
 import Order from './components/Order';
 import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
 import Inventory from './components/Inventory';
-import {loadSamples, removeFish, increase, decrease} from './components/FishUtils';
+import {loadSamples, removeFish, addFish, increase, decrease} from './components/FishUtils';
 
 class FishData extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ class FishData extends React.Component {
                 {load}
                 <Store fishList={this.state.fishList} increase={increase.bind(this)}/>
                 <Order fishList={this.state.fishList} increase={increase.bind(this)} decrease={decrease.bind(this)}/>
-                <Inventory fishList={this.state.fishList} remove={removeFish.bind(this)}/>
+                <Inventory fishList={this.state.fishList} remove={removeFish.bind(this)} add={addFish.bind(this)}/>
             </div>
         );
     }
