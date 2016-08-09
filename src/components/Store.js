@@ -8,7 +8,7 @@ class Store extends React.Component {
             <div className="col-sm-12 col-md-7 col-lg-5">
                 <Header text="Catch of the Day" text2="Fresh Seafood Market"/>
                 <ul className="list-group">
-                    {Object.keys(fl).map((key)=>{return <Fishbox fish={fl[key]} key={key} kay={key} increase={this.props.increase}/>})}
+                    {Object.keys(fl).map((key)=>{return <Fishbox {...this.props} fish={fl[key]} key={key} kay={key}/>})}
                 </ul>
             </div>
         );

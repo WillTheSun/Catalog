@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Store from './components/Store';
 import Order from './components/Order';
-import Bootstrap from 'bootstrap/dist/css/bootstrap.min.css';
+import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
 import Inventory from './components/Inventory';
 import {loadSamples, removeFish, addFish, increase, decrease} from './components/FishUtils';
 

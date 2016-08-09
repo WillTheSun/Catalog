@@ -11,7 +11,7 @@ class OrderForm extends React.Component {
         for (var key in this.props.fishList) {
             let x = this.props.fishList[key];
             if (x.quantity > 0) {
-                fishInCart.push(<OrderItem fish={x} kay={key} key={key} increase={this.props.increase} decrease={this.props.decrease}/>);
+                fishInCart.push(<OrderItem {...this.props} fish={x} kay={key} key={key}/>);
             }
         }
         return fishInCart;

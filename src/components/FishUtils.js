@@ -5,7 +5,8 @@ export function loadSamples() {
     var jList = require('./sample-fishes');
     Object.keys(jList).forEach((key)=>{
         let x = jList[key];
-        fishList[keyGen] = createFish(x.name, x.price, x.desc, x.image, x.status);
+        let status = (x.status=='available');
+        fishList[keyGen] = createFish(x.name, x.price, x.desc, x.image, status);
         keyGen++;
     });
     return fishList;
