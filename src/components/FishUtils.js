@@ -3,9 +3,9 @@ let keyGen = 0;
 export function loadSamples() {
     var fishList = {};
     var jList = require('./sample-fishes');
-    Object.keys(jList).forEach((key)=>{
+    Object.keys(jList).forEach((key) => {
         let x = jList[key];
-        let status = (x.status=='available');
+        let status = (x.status == 'available');
         fishList[keyGen] = createFish(x.name, x.price, x.desc, x.image, status);
         keyGen++;
     });
@@ -22,6 +22,13 @@ export function createFish(name, price, desc, image, status) {
         status: status,
         quantity: 0
     }
+}
+
+export function updateFish(key, attr, val) {
+    this.state.fishList[key][attr] = val;
+    this.setState({
+        fishList: this.state.fishList
+    }); 
 }
 
 export function removeFish(key) {
