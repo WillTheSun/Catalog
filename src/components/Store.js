@@ -18,11 +18,11 @@ class Store extends React.Component {
 class Fishbox extends React.Component {
     render() {
         let fish = this.props.fish;
-        let contentDisabled = fish.status ? {opacity: .3} : {};
-        let soldOut =  fish.status ? {fontSize:60, textAlign: 'center'} : {opacity: 0}
+        let contentDisabled = fish.status ? {} : {opacity: .3};
+        let soldOut =  fish.status ? {opacity: 0} : {fontSize:60, textAlign: 'center'};
         return <div className="card card-inverse col-lg-12 col-sm-12 col-xs-12">
             <div className="card-img-overlay" style={soldOut}>
-                <span class="card-title">Sold Out</span>
+                <span>Sold Out</span>
             </div>
             
             <div className="card-block" style={contentDisabled}>
