@@ -52,7 +52,7 @@ class InventoryBox extends React.Component {
                         <div className="row">
                             <div className="col-xl-4 col-xs-4"><TextInput text={fish.name} attr={'name'} {...this.props}/></div>
                             <div className="col-xl-4 col-xs-4"><TextInput text={fish.price} attr={'price'} {...this.props}/></div>
-                            <div className="col-xl-4 col-xs-4"><StatusDrop status={fish.status} /></div>
+                            <div className="col-xl-4 col-xs-4"><StatusDrop status={fish.status} attr={'status'} {...this.props}/></div>
                         </div>
                         <TextInput text={fish.desc} attr={'desc'} {...this.props}/>
                         <TextInput text={fish.image} attr={'image'} {...this.props} />
@@ -71,9 +71,13 @@ class TextInput extends React.Component {
 }
 
 class StatusDrop extends React.Component {
+    statusUpdate = (e) => {
+        let status = (e.target.value == 'A') ? 1 : 0;
+        this.props.updateFish(this.props.kay, this.props.attr, status);
+    }
     render() {
         return (
-            <select defaultValue={this.props.status? 'A' : 'B'} className="custom-select">
+            <select value={this.props.status ? 'A' : 'B'} className="custom-select" onChange={this.statusUpdate}>
               <option value='A'>Fresh</option>
               <option value='B'>Out</option>
             </select>
