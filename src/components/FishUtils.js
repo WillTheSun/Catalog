@@ -28,7 +28,7 @@ export function updateFish(key, attr, val) {
     this.state.fishList[key][attr] = val;
     this.setState({
         fishList: this.state.fishList
-    }); 
+    });
 }
 
 export function removeFish(key) {

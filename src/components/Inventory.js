@@ -20,14 +20,27 @@ class Inventory extends React.Component {
 }
 
 class NewFishBox extends React.Component {
-    submitNewFish(key, fish) {
-        this.props.addFish(key, fish);
+    state = {
+        fish: createFish('name', '000', 'Enter Description Here', 'Image Url', 'Fresh')
+    }
+    handleFishChange = (key, attr, val) => {
+        this.state.fish[attr] = val;
+        this.setState({
+            fish: this.state.fish
+        });
+    }
+    submitNewFish() {
+        this.props.addFish((new Date()).getTime(), this.state.fish);
+        this.state.fish = createFish('name', '000', 'Enter Description Here', 'Image Url', 'Fresh');
+        this.setState({
+            fish: this.state.fish
+        });
     }
     render() {
-        let defaultForm = createFish('name', '000', 'Enter Description Here', 'Image Url', 'Fresh');
-        return <InventoryBox fish={defaultForm} key={(new Date()).getTime()} kay={(new Date()).getTime()} btnTxt='Add Fish' btnClick={this.props.addFish}/>
+        return <InventoryBox {...this.props} fish={this.state.fish} btnTxt='Add Fish' updateFish={this.handleFishChange.bind(this)} btnClick={this.submitNewFish.bind(this)}/>
     }
 }
+
 
 class InventoryBox extends React.Component {
     render() {
@@ -53,7 +66,7 @@ class InventoryBox extends React.Component {
 
 class TextInput extends React.Component {
     render() {
-        return <input type='text' className="form-control" defaultValue={this.props.text} onChange={(event)=> this.props.updateFish(this.props.kay, this.props.attr, event.target.value)}/>
+        return <input type='text' className="form-control" value={this.props.text} onChange={(e)=> this.props.updateFish(this.props.kay, this.props.attr, e.target.value)}/>
     }
 }
 

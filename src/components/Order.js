@@ -60,10 +60,10 @@ class Total extends React.Component {
     }
 }
 
-class Message extends React.Component {
+/*class Message extends React.Component {
     render() {
         return (<h5 className="text-xs-center">{this.props.text}</h5>);
     }
-}
+}*/
 
 export default OrderForm;
